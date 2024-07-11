@@ -11,3 +11,12 @@ jobs:
                 node-version: '20'
             - run: npm install -g bats
             - run: bats -v    
+    my_first_job:
+        runs-on: ubuntu-latest
+        steps:
+            - name: My first step - check out repository
+              uses: actions/checkout@v4
+            - name: Use local hello-world-action
+              uses: ./.github/actions/hello-world-action
+              with:
+                who-to-great: "GitHub Actions"
