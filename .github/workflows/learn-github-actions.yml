@@ -21,4 +21,4 @@ jobs:
               with:
                 who-to-great: "GitHub Actions"
             - name: My Second step
-              uses: docker://alpine:3:8
+              uses: docker://alpine:3.8
