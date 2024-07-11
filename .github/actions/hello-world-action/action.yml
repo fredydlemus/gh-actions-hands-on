@@ -13,6 +13,8 @@ runs:
   steps:
     - name: Say Hello
       run: echo "Hello ${{ inputs.who-to-great }}!"
+      shell: bash
     - name: Get current time
       id: time
       run: echo "time=$(date) >> $GITHUB_OUTPUT"
+      shell: bash
