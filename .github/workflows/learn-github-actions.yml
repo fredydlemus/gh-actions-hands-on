@@ -20,3 +20,5 @@ jobs:
               uses: ./.github/actions/hello-world-action
               with:
                 who-to-great: "GitHub Actions"
+            - name: My Second step
+              uses: docker://alpine:3:8
