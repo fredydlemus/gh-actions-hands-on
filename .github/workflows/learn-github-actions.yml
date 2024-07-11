@@ -17,8 +17,12 @@ jobs:
             - name: My first step - check out repository
               uses: actions/checkout@v4
             - name: Use local hello-world-action
+              id: hello
               uses: ./.github/actions/hello-world-action
               with:
                 who-to-great: "GitHub Actions"
+            - name: Time that was greeted
+              run: |
+                echo "Time that was greeted: ${{ steps.hello.outputs.time }}"
             - name: My Second step
               uses: docker://alpine:3.8
