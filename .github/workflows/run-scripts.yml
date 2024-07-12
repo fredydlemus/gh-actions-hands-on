@@ -1,0 +1,16 @@
+name: Run scripts
+on:
+    workflow_dispatch:
+jobs:
+    example-job:
+        runs-on: ubuntu-latest
+        defaults:
+            run:
+                working-directory: ./scripts
+        steps:
+            - name: Checkout the repository to the runner
+              uses: actions/checkout@v4
+            - name: Run a script
+              run: ./my-script.sh
+            - name: Run another script
+              run: ./another-script.sh
