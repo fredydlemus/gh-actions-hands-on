@@ -1,5 +1,7 @@
 name: Literals
 on:
+    issues:
+        types: [opened]
     workflow_dispatch:
 jobs:
     example-job:
@@ -11,3 +13,6 @@ jobs:
               env:
                 MY_ENV_VAR: ${{ github.ref == 'refs/heads/main' && 'value_for_main_branch' || 'value_for_other_branches' }} 
               run: echo $MY_ENV_VAR
+            - run: echo ${{ contains('Hello world', 'llo') }}
+            - run: echo ${{ toJson(github.event.issue.labels)}}
+            - run: echo ${{ contains(github.event.issue.labels.*.name, 'bug') }}
