@@ -4,6 +4,9 @@ on:
         types: [opened]
     workflow_dispatch:
     push:
+env:
+  continue: true
+  time: 3
 jobs:
     example-job:
         runs-on: ubuntu-latest
@@ -16,5 +19,11 @@ jobs:
               run: echo $MY_ENV_VAR
             - run: echo ${{ contains('Hello world', 'llo') }}
             - run: echo ${{ contains(github.event.issue.labels.*.name, 'bug') }}
-            - run: echo ${{ contains(fromJSON('["push", "pull_request"]'), github.event.name) }}
+            - run: echo ${{ contains(fromJSON('["push", "pull_request"]'), github.event_name) }}
             - run: echo ${{ format('Hello {0} {1} {2}', 'Mona', 'the', 'Octocat') }}
+            - run: echo ${{ toJson(job)}}
+    print:
+        runs-on: ubuntu-latest
+        steps:
+            - run: echo ${{ env.continue }}
+            - run: echo ${{ fromJson(env.continue) }}
